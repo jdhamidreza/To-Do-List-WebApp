@@ -1,0 +1,435 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 219, 226, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 183, 197, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.2) 0%, transparent 50%),
+        linear-gradient(135deg, #2E8B57 0%, #3CB371 25%, #98FB98 50%, #90EE90 75%, #00FA9A 100%);
+    overflow-x: hidden;
+    position: relative;
+    animation: backgroundColorShift 25s ease-in-out infinite;
+}
+
+@keyframes backgroundColorShift {
+    0% {
+        background: linear-gradient(135deg, #2E8B57 0%, #3CB371 25%, #98FB98 50%, #90EE90 75%, #00FA9A 100%);
+    }
+    25% {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    }
+    50% {
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    }
+    75% {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%);
+    }
+    100% {
+        background: linear-gradient(135deg, #2E8B57 0%, #3CB371 25%, #98FB98 50%, #90EE90 75%, #00FA9A 100%);
+    }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(72, 187, 120, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(56, 178, 172, 0.1) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    z-index: 20;
+}
+
+.logo-image {
+    height: 60px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    background: linear-gradient(135deg, #2E8B57, #00FA9A);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+/* Social Icons at Top Right */
+.social-icons-bottom {
+    display: flex;
+    gap: 15px;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 20;
+}
+
+.social-icons-bottom a {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+}
+
+.social-icons-bottom a:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.social-icons-bottom i {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* GitHub Icon Hover */
+.social-icons-bottom a:first-child:hover {
+    background: rgba(36, 41, 46, 0.8);
+}
+
+/* LinkedIn Icon Hover */
+.social-icons-bottom a:last-child:hover {
+    background: rgba(0, 119, 181, 0.8);
+}
+
+/* Rainbow Container */
+.rainbow-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 600px;
+    min-height: 70vh;
+    padding: 30px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, 
+        #ff0000, #ff7f00, #ffff00, #00ff00, 
+        #0000ff, #4b0082, #9400d3, #ff0000);
+    background-size: 400% 400%;
+    animation: rainbowMove 8s ease-in-out infinite;
+    box-shadow: 
+        0 0 50px rgba(255, 0, 0, 0.3),
+        0 0 100px rgba(0, 255, 0, 0.2),
+        0 0 150px rgba(0, 0, 255, 0.1);
+    z-index: 1;
+}
+
+.rainbow-container::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 22px;
+    z-index: -1;
+}
+
+@keyframes rainbowMove {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    margin: 0 auto;
+    z-index: 2;
+    padding: 0;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: rgb(1, 11, 5);
+}
+
+.app-header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.app-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+#new-task {
+    background: rgba(226, 217, 217, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 2.5rem 2rem;
+    border-radius: 25px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+#new-task:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+#new-task input {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 1rem 0.5rem;
+    color: #333;
+    font-weight: 400;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+#new-task input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    transform: translateY(-2px);
+}
+
+#new-task input::placeholder {
+    color: #888;
+}
+
+#new-task button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: rgb(17, 160, 46);
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+#new-task button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+#new-task button:active {
+    transform: translateY(0);
+}
+
+#tasks {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    margin-top: 2.5rem;
+    border-radius: 25px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-height: 400px;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+#tasks:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+#tasks::-webkit-scrollbar {
+    width: 8px;
+}
+
+#tasks::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#tasks::-webkit-scrollbar-thumb {
+    background: rgba(76, 175, 80, 0.6);
+    border-radius: 10px;
+}
+
+.task {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    backdrop-filter: blur(10px);
+}
+
+.task:hover {
+    background: rgb(255, 255, 255);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.task span {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+    flex-grow: 1;
+}
+
+.task button {
+    color: rgb(14, 178, 57);
+    padding: 0.22rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.9s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task button:hover {
+    transform: scale(1.1);
+}
+
+.delete {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    margin-left: 0.5rem;
+}
+
+.edit {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    margin-left: auto;
+    margin-right: 0.5rem;
+}
+
+.completed {
+    opacity: 0.7;
+}
+
+.completed span {
+    text-decoration: line-through;
+    color: #0a0505;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #e3e3c7;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.task-count {
+    text-align: center;
+    color: rgb(20, 195, 14);
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        left: 20px;
+        gap: 10px;
+    }
+    
+    .logo-image {
+        height: 40px;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+    
+    .rainbow-container {
+        width: 98%;
+        padding: 20px;
+        min-height: 65vh;
+    }
+    
+    .app-header h1 {
+        font-size: 2rem;
+    }
+    
+    #new-task {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+    }
+    
+    /* Mobile styling for top right social icons */
+    .social-icons-bottom {
+        top: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+    
+    .social-icons-bottom a {
+        width: 40px;
+        height: 40px;
+    }
+}
